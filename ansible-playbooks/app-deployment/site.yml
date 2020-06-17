@@ -1,8 +1,8 @@
 - hosts: 127.0.0.1
   vars:
-    artifactName: "{{ ansible_env.ARTIFACT_NAME }}"
-    artifactVersion: "{{ ansible_env.ARTIFACT_VERSION }}"
-    apsAppName: "{{ ansible_env.APP_NAME }}"
+    artifactName: {{ ansible_env.ARTIFACT_NAME }}
+    artifactVersion: {{ ansible_env.ARTIFACT_VERSION }}
+    apsAppName: {{ ansible_env.APP_NAME }}
     apsPackageName: com/alfresco/aps
     apsApiUser: admin@app.activiti.com
     apsApiPassword: admin
@@ -27,8 +27,8 @@
       return_content: yes
     register: apps_json_response
   - set_fact:
-      app_list: "{{ apps_json_response.json.data | selectattr('name', 'equalto', apsAppName) | map(attribute='id') | list }}"
-  - shell: 'curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F file=@{{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip "http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/app-definitions/{{app_list.0}}/import?renewIdmEntries={{renewIdm}}"'
+      app_list: {{ apps_json_response.json.data | selectattr('name', 'equalto', apsAppName) | map(attribute='id') | list }}
+  - win_shell: 'curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F file=@{{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip "http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/app-definitions/{{app_list.0}}/import?renewIdmEntries={{renewIdm}}"'
     when: app_list
-  - shell: 'curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F file=@{{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip "http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/app-definitions/import?renewIdmEntries={{renewIdm}}"'
+  - win_shell: 'curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F file=@{{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip "http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/app-definitions/import?renewIdmEntries={{renewIdm}}"'
     when: not app_list
