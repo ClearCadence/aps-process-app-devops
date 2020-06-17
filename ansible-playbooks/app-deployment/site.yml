@@ -18,17 +18,5 @@
   name: Download App Zip
   tasks:
   - win_get_url:
-      url: http://{{artifactoryHost}}:{{artifactoryPort}}/{{artifactoryUri}}/{{apsPackageName}}/{{artifactName}}/{{artifactVersion}}/{{artifactName}}-{{artifactVersion}}-App.zip
-      dest: {{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip                                                                 
-  - win_uri:
-      url: http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/models?modelType=3
-      user: {{apsApiUser}}
-      password: {{apsApiPassword}}
-      return_content: yes
-    register: apps_json_response
-  - set_fact:
-      app_list: {{ apps_json_response.json.data | selectattr('name', 'equalto', apsAppName) | map(attribute='id') | list }}
-  - win_shell: 'curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F file=@{{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip "http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/app-definitions/{{app_list.0}}/import?renewIdmEntries={{renewIdm}}"'
-    when: app_list
-  - win_shell: 'curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F file=@{{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip "http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/app-definitions/import?renewIdmEntries={{renewIdm}}"'
-    when: not app_list
+      url: 'http://{{artifactoryHost}}:{{artifactoryPort}}/{{artifactoryUri}}/{{apsPackageName}}/{{artifactName}}/{{artifactVersion}}/{{artifactName}}-{{artifactVersion}}-App.zip'
+      dest: '{{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip'                                                               
