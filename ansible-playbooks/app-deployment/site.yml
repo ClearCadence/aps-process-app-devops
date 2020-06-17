@@ -17,6 +17,6 @@
   # App Deployment - this needs to happen only once. So you don't need to do this against all nodes.
   name: Download App Zip
   tasks:
-  - win_get_url:
-      url: 'http://{{artifactoryHost}}:{{artifactoryPort}}/{{artifactoryUri}}/{{apsPackageName}}/{{artifactName}}/{{artifactVersion}}/{{artifactName}}-{{artifactVersion}}-App.zip'
-      dest: '{{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip'                                                               
+   tasks:
+  - name: ping
+    win_ping:                                                            
