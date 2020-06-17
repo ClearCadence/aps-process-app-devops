@@ -1,6 +1,5 @@
 - hosts: 127.0.0.1
   vars:
-    checkoutLocation: C:\Windows\Temp
     renewIdm: true
   # App Deployment - this needs to happen only once. So you don't need to do this against all nodes.
   name: Download App Zip
