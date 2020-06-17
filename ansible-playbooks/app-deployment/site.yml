@@ -10,7 +10,7 @@
     apsPort: 8080
     apsApiUri: activiti-app/api/enterprise
     artifactoryHost: localhost
-    artifactoryPort: 8081
+    artifactoryPort: 8082
     artifactoryUri: artifactory/libs-release-local
     checkoutLocation: C:/Windows/temp
     renewIdm: true
