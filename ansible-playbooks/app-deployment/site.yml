@@ -22,8 +22,8 @@
       dest: {{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip                                                                 
   - win_uri:
       url: http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/models?modelType=3
-      user: "{{apsApiUser}}"
-      password: "{{apsApiPassword}}"
+      user: {{apsApiUser}}
+      password: {{apsApiPassword}}
       return_content: yes
     register: apps_json_response
   - set_fact:
