@@ -17,11 +17,10 @@
   # App Deployment - this needs to happen only once. So you don't need to do this against all nodes.
   name: Download App Zip
   tasks:
-  - get_url:
+  - win_get_url:
       url: http://{{artifactoryHost}}:{{artifactoryPort}}/{{artifactoryUri}}/{{apsPackageName}}/{{artifactName}}/{{artifactVersion}}/{{artifactName}}-{{artifactVersion}}-App.zip
-      dest: "{{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip"
-      mode: 0440                                                                    
-  - uri:
+      dest: "{{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip"                                                                  
+  - win_uri:
       url: http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/models?modelType=3
       user: "{{apsApiUser}}"
       password: "{{apsApiPassword}}"
