@@ -1,8 +1,8 @@
 - hosts: 127.0.0.1
   vars:
-    artifactName: "{{ ansible_env.ARTIFACT_NAME }}"
-    artifactVersion: "{{ ansible_env.ARTIFACT_VERSION }}"
-    apsAppName: "{{ ansible_env.APP_NAME }}"
+    artifactName: "super-cool-process-app"
+    artifactVersion: "1.0.13"
+    apsAppName: "Super Cool App"
     apsPackageName: com/alfresco/aps
     apsApiUser: admin@app.activiti.com
     apsApiPassword: admin
