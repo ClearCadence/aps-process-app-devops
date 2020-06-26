@@ -29,7 +29,7 @@
     register: apps_json_response
   - set_fact:
       app_list: "{{ apps_json_response.json.data | selectattr('name', 'equalto', apsAppName) | map(attribute='id') | list }}"
-  - shell: 'curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F file=@{{checkoutLocation}}/{{artifactName}}-{{artifactVersion}}-App.zip "http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/app-definitions/{{app_list.0}}/import?renewIdmEntries={{renewIdm}}"'
+  - shell: 'pwd'
     when: app_list
-  - shell: 'curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F file=@{{artifactName}}-{{artifactVersion}}-App.zip "http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/app-definitions/import?renewIdmEntries={{renewIdm}}"'
+  - shell: 'pwd'
     when: not app_list
