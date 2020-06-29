@@ -33,7 +33,7 @@
     args:
        chdir: "{{checkoutLocation}}"
     when: app_list
-  - shell: curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F file=@{{artifactName}}-{{artifactVersion}}-App.zip http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/app-definitions/import?renewIdmEntries={{renewIdm}}
+  - shell: curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F file=@{{artifactName}}-{{artifactVersion}}-App.zip http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/cc/app-definitions/import?renewIdmEntries={{renewIdm}}
     args:
         chdir: "{{checkoutLocation}}"
     when: not app_list
