@@ -1,6 +1,6 @@
 - hosts: 127.0.0.1
   vars:
-    artifactName: {{ARTIFACT_NAME}}
+    artifactName: "{{ARTIFACT_NAME}}"
     artifactVersion: "1.0.13"
     apsAppName: "Super Cool App"
     apsPackageName: com/alfresco/aps
