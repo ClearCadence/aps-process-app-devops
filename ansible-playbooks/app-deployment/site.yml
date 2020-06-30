@@ -3,6 +3,8 @@
     artifactName: "{{ARTIFACT_NAME}}"
     artifactVersion: "{{ARTIFACT_VERSION}}"
     apsAppName: "{{APP_NAME}}"
+    sourceServer: "{{SOURCE_SERVER}}"
+    destinationServer: "{{DESTINATION_SERVER}}"
     apsPackageName: com/wellsfargo/aps
     apsApiUser: admin@app.activiti.com
     apsApiPassword: admin
@@ -33,7 +35,7 @@
     args:
        chdir: "{{checkoutLocation}}"
     when: app_list
-  - shell: curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F 'file=@{{artifactName}}-{{artifactVersion}}-App.zip' 'http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/cc/app-definitions/import?renewIdmEntries={{renewIdm}}&source=QA&destination=DEV'
+  - shell: curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F 'file=@{{artifactName}}-{{artifactVersion}}-App.zip' 'http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/cc/app-definitions/import?renewIdmEntries={{renewIdm}}&source={{SOURCE_SERVER}}&destination={{DESTINATION_SERVER}}'
     args:
         chdir: "{{checkoutLocation}}"
     when: not app_list
