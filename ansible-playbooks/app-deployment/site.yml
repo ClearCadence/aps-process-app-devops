@@ -3,7 +3,7 @@
     artifactName: "{{ARTIFACT_NAME}}"
     artifactVersion: "{{ARTIFACT_VERSION}}"
     apsAppName: "{{APP_NAME}}"
-    apsPackageName: com/alfresco/aps
+    apsPackageName: com/wellsfargo/aps
     apsApiUser: admin@app.activiti.com
     apsApiPassword: admin
     apsHost: localhost
