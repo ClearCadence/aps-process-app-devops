@@ -31,7 +31,7 @@
     register: apps_json_response
   - set_fact:
       app_list: "{{ apps_json_response.json.data | selectattr('name', 'equalto', apsAppName) | map(attribute='id') | list }}"
-  - shell: curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F 'file=@{{artifactName}}-{{artifactVersion}}-App.zip' 'http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/cc/app-definitions/{{app_list.0}}/import?renewIdmEntries={{renewIdm}}&source=QA&destination=DEV'
+  - shell: curl -X POST -u {{apsApiUser}}:{{apsApiPassword}} -F 'file=@{{artifactName}}-{{artifactVersion}}-App.zip' 'http://{{apsHost}}:{{apsPort}}/{{apsApiUri}}/cc/app-definitions/{{app_list.0}}/import?renewIdmEntries={{renewIdm}}&source={{SOURCE_SERVER}}&destination={{DESTINATION_SERVER}}'
     args:
        chdir: "{{checkoutLocation}}"
     when: app_list
